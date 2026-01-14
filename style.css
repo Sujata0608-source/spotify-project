@@ -1,12 +1,28 @@
+/* resetting the in-built margin & padding of elements that comes with it naturally */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
-    /* background-color: white;
-    color: black; */
+    /* background-color: black;
+    color: white; */
 }
 
 .left{
     width: 25vw;
+    padding: 34px;
+
 }
 
 .right{
     width: 75vw;
+}
+
+/* correcting the size of home & search icons */
+.home ul li{
+    list-style: none;
+    width: 16px;
+    display: flex;
+    gap: 15px;
 }
