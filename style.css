@@ -19,10 +19,16 @@ body{
     width: 75vw;
 }
 
+.home{
+   
+}
+
 /* correcting the size of home & search icons */
 .home ul li{
     list-style: none;
     width: 16px;
     display: flex;
     gap: 15px;
+    padding-top: 14px;
+    padding-right: 80px;
 }
