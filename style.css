@@ -1,7 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 /* resetting the in-built margin & padding of elements that comes with it naturally */
 *{
     margin: 0px;
     padding: 0px;
+    font-family: "Roboto", sans-serif;
 }
 
 body{
@@ -25,10 +30,32 @@ body{
 
 /* correcting the size of home & search icons */
 .home ul li{
-    list-style: none;
-    width: 16px;
     display: flex;
     gap: 15px;
+    width: 14px;
+    list-style: none;
     padding-top: 14px;
-    padding-right: 80px;
+    font-weight: bold;
+}
+
+/* styling the library & header section */
+.heading{
+    display: flex;
+    gap: 15px;
+    /* width: 100%; */
+    padding-top: 14px;
+    padding: 23px 14px;
+    font-weight: bold;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* fix: adjust library section image/text alignment */
+.heading img{
+    width: 30px;
+}
+
+.footer{
+    
+
 }
