@@ -20,9 +20,6 @@ body{
 
 }
 
-.right{
-    width: 75vw;
-}
 
 .home{
    
@@ -73,3 +70,17 @@ body{
     color: grey;
 }
 
+.right{
+    margin:16px 0;
+    width: 75vw;
+}
+
+.header{
+    display:flex;
+    justify-content: space-between;
+    background-color: rgb(34, 34, 34);
+}
+
+.header >*{
+    padding: 20px;
+}
