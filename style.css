@@ -10,8 +10,8 @@
 }
 
 body{
-    /* background-color: black;
-    color: white; */
+    background-color: black;
+    color: white;
 }
 
 .left{
@@ -55,7 +55,20 @@ body{
     width: 30px;
 }
 
-.footer{
-    
+.library{
+    min-height: 80vh;
+    position:relative;
+}
 
+.footer{
+    display: flex;
+    font-size: 10px;
+    color: grey;
+    gap: 13px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer a{
+    color: grey;
 }
