@@ -64,15 +64,20 @@ body{
     gap: 13px;
     position: absolute;
     bottom: 0;
+     
+    flex-wrap: wrap;
+    padding: 10px 0;
 }
 
 .footer a{
     color: grey;
+   
 }
 
 .right{
     margin:16px 0;
     width: 75vw;
+    position: relative;
 }
 
 .header{
@@ -83,4 +88,58 @@ body{
 
 .header >*{
     padding: 20px;
+}
+
+.spotifyPlaylists{
+    padding: 16px;
+    
+}
+.cardContainer{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+.card{
+    /* border: 2px solid red; */
+    width: 200px;
+    position: relative;
+    
+    
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+    /* background-color: rgb(39, 38, 38); */
+    
+}
+.play{
+    position: absolute;
+    top: 260px;
+    right: 20px;
+    /* opacity: 0; */
+    transition: all 1s ease-out;
+}
+
+.card >*{
+    padding-top: 10px;
+}
+
+.card img{
+    /* width: 175px;
+  height: 165px;
+  object-fit: cover; */
+
+  height:200px;
+  width: 100%;
+  object-fit:fill;
+ 
+}
+
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(8, 50, 8);
+    width: 100%;
+    padding: 12px;
+    
 }
