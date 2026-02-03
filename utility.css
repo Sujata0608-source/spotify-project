@@ -40,3 +40,34 @@
 .p-1{
     padding: 10px;
 }
+
+/* scrollbar theme change to dark */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0f1115; /* deep dark */
+  border-radius: 10px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: #2a2f3a; /* dark grey */
+  border-radius: 10px;
+  border: 2px solid #0f1115; /* gives padding effect */
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4050;
+}
+
+/* Thumb on active (drag) */
+::-webkit-scrollbar-thumb:active {
+  background: #4a5166;
+} 
