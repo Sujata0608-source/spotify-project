@@ -138,14 +138,7 @@ body{
  
 }
 
-.playbar{
-    position: absolute;
-    bottom: 0;
-    background-color: rgb(8, 50, 8);
-    width: 100%;
-    padding: 12px;
-    
-}
+
 /* styling the elements inside the buttons */
 .buttons > *{
 margin: 0 12px;
@@ -180,4 +173,19 @@ margin: 0 12px;
    font-weight: bolder;
     font-size: 16px;
    /* padding: 11px; */
+}
+
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(8, 50, 8);
+    width:90%;
+    padding: 12px;
+    
+}
+
+.songbuttons{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
