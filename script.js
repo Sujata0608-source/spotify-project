@@ -11,17 +11,18 @@ async function getSongs(){
     div.innerHTML=  response;
     //the list of all things that has an anchor tag to it
     let as=div.getElementsByTagName("a")
-
-    let songs=[]
+    let songs=[];
+    
+    // 
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
-        //filtering the mp3 elements only
         if(element.href.endsWith(".mp3")){
-            songs.push(element.href)
-        }  
+            songs.push(element.href.split("song")[1]);
+        } 
+        
     }
     return songs;
-    
+      
 }
 
 //function to return songs from our songs directory  
@@ -30,12 +31,19 @@ async function main(){
     let songs= await getSongs();
     console.log(songs);
 
+    //putting the songs into the songList
+    let songUL=document.querySelector(".songList").getElementsByTagName("ul")[0]
+    for (const song of songs) {
+        songUL.innerHTML= songUL.innerHTML + `<li> 
+        ${song.replaceAll("%20"," ").replaceAll("s%5C"," ").replaceAll("%C3"," ")} </li>`;
+    }
+
     //play the first song
     let audio = new Audio(songs[0]);
   
 
     audio.addEventListener("loadeddata", ()=>{
-          audio.play()
+        //   audio.play()
         let duration= audio.duration;
         console.log(audio.duration, audio.currentSrc,audio.currentTime); 
     });
