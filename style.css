@@ -190,21 +190,28 @@ margin: 0 12px;
     gap: 12px;
 }
 
+
+
 .songList ul{
-padding: 0 42px;
+padding: 0 10px;
 }
 
 .songList ul li{
     list-style-type: decimal;
     display: flex;
-    gap: 34px;
-    /* justify-content: space-between; */
+    justify-content: space-between;
+    gap: 12px;
     cursor: pointer;
     padding: 12px 0px;
     border: 1px solid white;
     margin: 12px 0;
     padding: 13px;
     border-radius: 5px;
+}
+
+.songList .info{
+font-size: 13px;
+width: 344px;
 }
 
 .playnow{
