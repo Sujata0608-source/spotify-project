@@ -176,12 +176,13 @@ margin: 0 12px;
 }
 
 .playbar{
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 19px;
     background-color: rgb(8, 50, 8);
-    width:90%;
+    width:75vw;
     padding: 12px;
-    
+    border-radius: 30px;
+    height: 39px;
 }
 
 .songbuttons{
@@ -190,7 +191,11 @@ margin: 0 12px;
     gap: 12px;
 }
 
-
+.songList{
+    height: 544px;
+    overflow: auto;
+    margin-bottom:44px;
+}
 
 .songList ul{
 padding: 0 10px;
@@ -225,4 +230,23 @@ width: 344px;
     font-size: 15px; 
     width: 64px;
     padding: 12px;
+}
+
+.seekbar{
+    height: 2px;
+    width: 98%;
+    border: 2px solid white;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+}
+
+.circle{
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background-color: white;
+    position: relative;
+    bottom: 6px;
+    left: 0%;
 }

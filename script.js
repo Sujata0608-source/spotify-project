@@ -29,7 +29,7 @@ async function getSongs(){
 async function main(){
     //get the list of all the songs
     let songs= await getSongs();
-    console.log(songs);
+   
 
     //putting the songs into the songList
     let songUL=document.querySelector(".songList").getElementsByTagName("ul")[0]
@@ -43,20 +43,19 @@ async function main(){
                             <div class="playnow">
                                 <span>Play Now</span>
                                 <img class="invert" src="play.svg" alt="">
-                            </div>
-        
-         </li>`;
+                            </div> </li>`;
     }
 
-    //play the first song
-    let audio = new Audio(songs[0]);
+    // //play the first song
+    // let audio = new Audio(songs[0]);
   
 
-    audio.addEventListener("loadeddata", ()=>{
-        //   audio.play()
-        let duration= audio.duration;
-        console.log(audio.duration, audio.currentSrc,audio.currentTime); 
-    });
+    // audio.addEventListener("loadeddata", ()=>{
+    //     //   audio.play()
+    //     let duration= audio.duration;
+    //     console.log(audio.duration, audio.currentSrc,audio.currentTime); 
+    // });
+    
     //  document.getElementById("playSong").addEventListener("click", () => {
     //     audio.play();
     // });
