@@ -181,7 +181,7 @@ margin: 0 12px;
     background-color: rgb(8, 50, 8);
     width:75vw;
     padding: 12px;
-    border-radius: 30px;
+    border-radius: 10px;
     height: 39px;
 }
 
@@ -235,7 +235,7 @@ width: 344px;
 .seekbar{
     height: 2px;
     width: 98%;
-    border: 2px solid white;
+    background: white;
     position: absolute;
     bottom: 0;
     border-radius: 10px;
@@ -245,8 +245,11 @@ width: 344px;
     width: 13px;
     height: 13px;
     border-radius: 13px;
-    background-color: white;
+    background: white;
     position: relative;
-    bottom: 6px;
-    left: 0%;
+    bottom: 12px;
+    left:0%;
+    margin: 6px;
+    /* applying the transition to the left property */
+    transition: left 0.5s; 
 }

@@ -1,5 +1,5 @@
 console.log("Let's write JS");
-
+let currentSong=new Audio();
 async function getSongs(){
     
     let a=await fetch("http://127.0.0.1:3000/songs/")
@@ -25,13 +25,23 @@ async function getSongs(){
       
 }
 
+//function playMusic
+const playMusic= (track)=>{
+// let audio= new Audio("/songs/"+track);   =>this lets all the songs play at once simultaneously if clicked upon, not one at a time
+
+currentSong.src="/songs/"+track;
+currentSong.play();
+}
+
 //function to return songs from our songs directory  
 async function main(){
-    //get the list of all the songs
+
+    
+    //get the list of all the songs in the form of an array
     let songs= await getSongs();
    
 
-    //putting the songs into the songList
+    //putting the songs into the songList using JS in the library section
     let songUL=document.querySelector(".songList").getElementsByTagName("ul")[0]
     for (const song of songs) {
         songUL.innerHTML= songUL.innerHTML + `<li>
@@ -45,6 +55,19 @@ async function main(){
                                 <img class="invert" src="play.svg" alt="">
                             </div> </li>`;
     }
+
+    //attach and eventlistener to each song
+    //we are getting an array of all the elements having 'li' tag to it
+    //basically, accessing the lists of songs
+   Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e=>{
+    e.addEventListener("click",element=>{
+
+        console.log(e.querySelector(".info").firstElementChild.innerHTML);
+
+        playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        
+    })
+   })
 
     // //play the first song
     // let audio = new Audio(songs[0]);
