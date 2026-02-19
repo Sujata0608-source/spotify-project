@@ -253,3 +253,7 @@ width: 344px;
     /* applying the transition to the left property */
     transition: left 0.5s; 
 }
+
+.songbuttons img{
+    cursor: pointer;
+}

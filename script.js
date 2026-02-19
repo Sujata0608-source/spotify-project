@@ -31,6 +31,7 @@ const playMusic= (track)=>{
 
 currentSong.src="/songs/"+track;
 currentSong.play();
+play.src="pause.svg"
 }
 
 //function to return songs from our songs directory  
@@ -67,6 +68,18 @@ async function main(){
         playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         
     })
+   })
+
+   //attach an event listener to songbuttons
+   play.addEventListener("click", ()=>{
+    if(currentSong.paused){
+        currentSong.play()
+        play.src="pause.svg"
+    }
+    else{
+        currentSong.pause()
+        play.src="play.svg"
+    }
    })
 
     // //play the first song
