@@ -240,7 +240,9 @@ width: 344px;
     background: white;
     position: absolute;
     bottom: 0;
+    margin: 6px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .circle{
