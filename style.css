@@ -177,10 +177,12 @@ margin: 0 12px;
 
 .playbar{
     position: fixed;
+    right: 0.2vw;
     bottom: 19px;
     background-color: rgb(8, 50, 8);
-    width:75vw;
+    width:70vw;
     padding: 12px;
+   /* margin: 6px; */
     border-radius: 10px;
     height: 39px;
 }
@@ -256,4 +258,17 @@ width: 344px;
 
 .songbuttons img{
     cursor: pointer;
+}
+
+.songinfo, .songtime{
+padding: 0 12px;
+}
+
+
+
+.abovebar{
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+    
 }
