@@ -182,7 +182,7 @@ margin: 0 12px;
     background-color: rgb(8, 50, 8);
     width:70vw;
     padding: 12px;
-   /* margin: 6px; */
+   margin: 6px;
     border-radius: 10px;
     height: 39px;
 }
@@ -235,10 +235,10 @@ width: 344px;
 }
 
 .seekbar{
-    height: 2px;
+    height: 4px;
     width: 98%;
     background: white;
-    position: absolute;
+    position: relative;
     bottom: 0;
     margin: 6px;
     border-radius: 10px;

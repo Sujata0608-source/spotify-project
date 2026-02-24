@@ -118,7 +118,12 @@ async function main() {
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
 
- 
+    //add an event listener to seekbar
+    document.querySelector(".seekbar").addEventListener("click",e=>{
+        let percent=(e.offsetX/e.target.getBoundingClientRect().width)*100;
+       document.querySelector(".circle").style.left=percent+"%";
+       currentSong.currentTime= ((currentSong.duration)*percent)/100;
+    })
 
 
 }
