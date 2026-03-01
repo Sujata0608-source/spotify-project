@@ -162,11 +162,14 @@ async function main() {
             playMusic(songs[0]);
         }
         //here using 'length' represents  window.length by default which is usually 0, that's why the logic (index+1)>length works fine but its a bit risky
-        
-        
     })
 
-   
+   //add an event listener to volume
+        document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e)=>{
+            console.log("Setting voume to ", e.target.value, "/100");
+            currentSong.volume= parseInt(e.target.value)/100
+            
+        })
 
 }
 main();
