@@ -1,5 +1,6 @@
 console.log("Let's write JS");
 let currentSong = new Audio();
+let songs;
 
 //function to convert seconds to minutes:seconds format
 function secondsToMinutesSeconds(seconds) {
@@ -62,7 +63,7 @@ async function main() {
 
 
     //get the list of all the songs in the form of an array
-    let songs = await getSongs();
+    songs = await getSongs();
     //to keep a default song playing whenever we reload the page
     playMusic(songs[0], true)
 
@@ -113,7 +114,7 @@ async function main() {
     //listen for timeupdate event
     currentSong.addEventListener("timeupdate", () => {
         console.log(currentSong.currentTime, currentSong.duration);
-        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`
+        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`
 
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
@@ -132,6 +133,37 @@ async function main() {
     //add an event listener to hamburger
     document.querySelector(".close").addEventListener("click", ()=>{
         document.querySelector(".left").style.left="-120%"
+    })
+
+    //add an event listener to previous and next
+    previous.addEventListener("click", ()=>{
+        console.log('Previous clicked');
+        console.log(currentSong);
+         let index= songs.indexOf( currentSong.src.split("/").slice(-1)[0])
+        if((index-1)>=0){
+        playMusic(songs[index-1]);
+        } 
+
+        
+    })
+
+    //add an event listener to next
+    next.addEventListener("click", ()=>{
+        currentSong.pause()
+        console.log('next clicked');
+
+        //getting the index of this song in the array of "songs"
+        let index= songs.indexOf( currentSong.src.split("/").slice(-1)[0])
+        if((index+1)< songs.length){
+        playMusic(songs[index+1]);
+        } 
+        else{
+            //after reachingthe last song, it goes back to the first song
+            playMusic(songs[0]);
+        }
+        //here using 'length' represents  window.length by default which is usually 0, that's why the logic (index+1)>length works fine but its a bit risky
+        
+        
     })
 
    
