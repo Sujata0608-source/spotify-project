@@ -1,6 +1,7 @@
 console.log("Let's write JS");
 let currentSong = new Audio();
 let songs;
+let currFolder;
 
 //function to convert seconds to minutes:seconds format
 function secondsToMinutesSeconds(seconds) {
@@ -18,35 +19,40 @@ function secondsToMinutesSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-async function getSongs() {
-
-    let a = await fetch("http://127.0.0.1:3000/songs/")
+async function getSongs(folder) {
+    currFolder= folder; //marks the folder that we are fetching songs from currently
+    let a = await fetch(`http://127.0.0.1:3000/${currFolder}/`)
     let response = await a.text();
-    //this gives us the song list that we are adding
-    // console.log(response)
 
     let div = document.createElement("div")
     div.innerHTML = response;
+
     //the list of all things that has an anchor tag to it
     let as = div.getElementsByTagName("a")
     let songs = [];
-
-    // 
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("songs%5C")[1]);
-        }
 
+                       let parts = element.href.split("cs%5C"); // This splits by BOTH / and \
+// This splits by BOTH / and \
+songs.push(parts.slice(-1)[0]);
+             // This splits by BOTH / and \
+
+
+            // songs.push(element.href.split("/").slice(-1)[0]);
+
+            //  if (element.href.endsWith(".mp3")) {
+            // songs.push(element.href.split(`/${currFolder}/`)[1]);
+        }
     }
     return songs;
-
 }
 
 //function playMusic
 const playMusic = (track, pause = false) => {
     // let audio= new Audio("/songs/"+track);   =>this lets all the songs play at once simultaneously if clicked upon, not one at a time
-    currentSong.src = "/songs/" + track;
+    currentSong.src = `/${currFolder}/` + track;
     if (!pause) {
         currentSong.play() // This is skipped because pause is true... GOOD.
         play.src = "pause.svg"
@@ -60,10 +66,8 @@ const playMusic = (track, pause = false) => {
 
 //function to return songs from our songs directory  
 async function main() {
-
-
     //get the list of all the songs in the form of an array
-    songs = await getSongs();
+    songs = await getSongs("songs/cs");
     //to keep a default song playing whenever we reload the page
     playMusic(songs[0], true)
 
@@ -170,6 +174,8 @@ async function main() {
             currentSong.volume= parseInt(e.target.value)/100
             
         })
+
+        //Load the playlist whenever card is clicked
 
 }
 main();

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root{
+    --a:0;
+}
 
 /* resetting the in-built margin & padding of elements that comes with it naturally */
 * {
@@ -127,6 +130,7 @@ body {
 .card:hover {
     background-color: rgb(105, 103, 103);
     cursor: pointer;
+    --a: 1;
 
 }
 
