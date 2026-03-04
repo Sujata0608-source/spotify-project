@@ -34,16 +34,14 @@ async function getSongs(folder) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
 
-                       let parts = element.href.split("cs%5C"); // This splits by BOTH / and \
-// This splits by BOTH / and \
-songs.push(parts.slice(-1)[0]);
-             // This splits by BOTH / and \
-
-
-            // songs.push(element.href.split("/").slice(-1)[0]);
-
-            //  if (element.href.endsWith(".mp3")) {
-            // songs.push(element.href.split(`/${currFolder}/`)[1]);
+           
+// This splits by "/" OR "%5C" OR "\"
+       let parts = element.href.split(/\/(?=[^\/]*$)|%5C/);
+        
+        // Take the last item in the array
+        let fileName = parts[parts.length - 1];
+        
+        songs.push(fileName);
         }
     }
     return songs;
