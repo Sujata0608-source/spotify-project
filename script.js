@@ -21,7 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder= folder; //marks the folder that we are fetching songs from currently
-    let a = await fetch(`http://127.0.0.1:3000/${currFolder}/`)
+    let a = await fetch(`http://127.0.0.1:3000/${folder}/`)
     let response = await a.text();
 
     let div = document.createElement("div")
@@ -29,21 +29,46 @@ async function getSongs(folder) {
 
     //the list of all things that has an anchor tag to it
     let as = div.getElementsByTagName("a")
-    let songs = [];
+    songs = [];
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-
-           
+        if (element.href.endsWith(".mp3")) {      
 // This splits by "/" OR "%5C" OR "\"
        let parts = element.href.split(/\/(?=[^\/]*$)|%5C/);
         
         // Take the last item in the array
         let fileName = parts[parts.length - 1];
-        
         songs.push(fileName);
         }
     }
+
+ //show all songs in the playlist
+    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    songUL.innerHTML= ""
+    for (const song of songs) {
+        songUL.innerHTML = songUL.innerHTML + `<li>
+        <img class="invert" src="music.svg" alt="">
+                            <div class="info">
+                                <div>${decodeURI(song)}</div>
+                                <div>Harry</div>              
+                            </div>
+                            <div class="playnow">
+                                <span>Play Now</span>
+                                <img class="invert" src="play.svg" alt="">
+                            </div> </li>`;
+    }
+
+    //attach and eventlistener to each song
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+
+            // console.log(e.querySelector(".info").firstElementChild.innerHTML);
+
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+
+        })
+    })
+
     return songs;
 }
 
@@ -60,43 +85,67 @@ const playMusic = (track, pause = false) => {
 
     document.querySelector(".songinfo").innerHTML = decodeURI(track)
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+
+     //show all songs in the playlist
+    // let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    // for (const song of songs) {
+    //     songUL.innerHTML = songUL.innerHTML + `<li>
+    //     <img class="invert" src="music.svg" alt="">
+    //                         <div class="info">
+    //                             <div>${decodeURI(song)}</div>
+    //                             <div>Harry</div>              
+    //                         </div>
+    //                         <div class="playnow">
+    //                             <span>Play Now</span>
+    //                             <img class="invert" src="play.svg" alt="">
+    //                         </div> </li>`;
+    // }
+
+    //attach and eventlistener to each song
+    // Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+    //     e.addEventListener("click", element => {
+
+    //         console.log(e.querySelector(".info").firstElementChild.innerHTML);
+
+    //         playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+
+    //     })
+    // })
 }
 
 //function to return songs from our songs directory  
 async function main() {
-    //get the list of all the songs in the form of an array
-    songs = await getSongs("songs/cs");
+    //get the list of all the songs
+    songs = await getSongs("songs/ncs");
     //to keep a default song playing whenever we reload the page
     playMusic(songs[0], true)
 
 
-    //putting the songs into the songList using JS in the library section
-    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
-    for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li>
-        <img class="invert" src="music.svg" alt="">
-                            <div class="info">
-                                <div>${decodeURI(song)}</div>
-                                <div>Harry</div>              
-                            </div>
-                            <div class="playnow">
-                                <span>Play Now</span>
-                                <img class="invert" src="play.svg" alt="">
-                            </div> </li>`;
-    }
+    //show all songs in the playlist
+    // let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    // for (const song of songs) {
+    //     songUL.innerHTML = songUL.innerHTML + `<li>
+    //     <img class="invert" src="music.svg" alt="">
+    //                         <div class="info">
+    //                             <div>${decodeURI(song)}</div>
+    //                             <div>Harry</div>              
+    //                         </div>
+    //                         <div class="playnow">
+    //                             <span>Play Now</span>
+    //                             <img class="invert" src="play.svg" alt="">
+    //                         </div> </li>`;
+    // }
 
     //attach and eventlistener to each song
-    //we are getting an array of all the elements having 'li' tag to it
-    //basically, accessing the lists of songs
-    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
-        e.addEventListener("click", element => {
+    // Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+    //     e.addEventListener("click", element => {
 
-            console.log(e.querySelector(".info").firstElementChild.innerHTML);
+    //         console.log(e.querySelector(".info").firstElementChild.innerHTML);
 
-            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+    //         playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
 
-        })
-    })
+    //     })
+    // })
 
     //attach an event listener to songbuttons
     play.addEventListener("click", () => {
@@ -174,6 +223,18 @@ async function main() {
         })
 
         //Load the playlist whenever card is clicked
+        Array.from(document.getElementsByClassName("card")).forEach(e=>{
+            console.log(e);
+            
+            e.addEventListener("click",async item=>{
+                console.log(item, item.currentTarget.dataset);
+                
+                //the code to load the folder
+                // songs=
+                await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+                
+            })
+        })
 
 }
 main();
