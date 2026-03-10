@@ -467,7 +467,6 @@ body {
 
     .card {
         width: 44vw;
-        /* width: auto; */
     }
 
     .card img {
@@ -488,14 +487,11 @@ body {
         align-items: center;
         gap: 23px;
     }
-    .cardContainer{
-        max-height: 40vh;
-    }
+
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
 .card {
-        /* width: 84vw; */
-        width: auto;
+        width: 84vw;
     }
 }
